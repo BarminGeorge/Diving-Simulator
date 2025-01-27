@@ -12,4 +12,8 @@ public static class Constants
     public const byte DefoltJumpForce = 8;
     public const byte JumpForceFromArmStand = 5;
     public const float NoDeltaHeight = 0f;
+    public const float RiseTimeMark = 0.6f;
+    public const float HeightRiseMark = 5;
+    public const int AngleForTenPoints = 3;
+    public const float RefereeingError = 0.5f;
 }

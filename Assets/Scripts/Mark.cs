@@ -32,23 +32,41 @@ public class Mark : MonoBehaviour
         var angle = Vector2.Angle(direction, Vector2.down);
         if (angle >= 90)
             ResultMark = 0;
-        if (angle <= 2)
+        if (angle <= Constants.AngleForTenPoints)
         {
             ResultMark = 10;
             return;
         }
-        
-        ResultMark = Mathf.Round((10 - (angle / 90) * 10 + Random.Range(-0.5f, 0.5f)) * 2) / 2;
+
+        ResultMark = 10 - (angle / 90) * 10 + Random.Range(-Constants.RefereeingError, Constants.RefereeingError);
+        ResultMark = Mathf.Round(ResultMark * 2) / 2;
         if (ResultMark < 0) ResultMark = 0;
-        if (ResultMark >10) ResultMark = 10;
+        if (ResultMark > 10) ResultMark = 10;
     }
 
     private void ShowMark()
     {
-        if (ResultMark != -1 && !IsMarkShow)
+        if (ResultMark >= 0 && !IsMarkShow)
+            StartCoroutine(ShowMarkCoroutine());
+    }
+    
+    private IEnumerator ShowMarkCoroutine()
+    {
+        var targetY = transform.position.y + Constants.HeightRiseMark;
+        var duration = Constants.RiseTimeMark;
+        var timeFromStart = 0f;
+
+        Vector2 startPosition = transform.position;
+
+        while (timeFromStart < duration)
         {
-            transform.position = new Vector2(transform.position.x, transform.position.y + 10);
-            IsMarkShow = true;
+            var animationProgress = timeFromStart / duration;
+            transform.position = Vector2.Lerp(startPosition, new Vector2(startPosition.x, targetY), animationProgress);
+        
+            timeFromStart += Time.deltaTime;
+            yield return null;
         }
+        
+        IsMarkShow = true;
     }
 }
