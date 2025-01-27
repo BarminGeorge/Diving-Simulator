@@ -38,7 +38,8 @@ public class ClassOfDive
         SpriteRenderer spriteRenderer)
     {
         BoxCollider.size = new Vector2(BoxCollider.size.x, SetColliderYSize());
-        transform.position = new Vector2(transform.position.x, transform.position.y + SetDeltaY());
+        transform.position = new Vector2(transform.position.x + Constants.DeltaXInChangeStand,
+            transform.position.y + SetDeltaY());
         spriteRenderer.sprite = sprite;
     }
 
