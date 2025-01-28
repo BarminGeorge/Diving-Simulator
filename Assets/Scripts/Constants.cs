@@ -16,4 +16,5 @@ public static class Constants
     public const float HeightRiseMark = 5;
     public const int AngleForTenPoints = 3;
     public const float RefereeingError = 0.5f;
+    public const float DeltaXInChangeStand = 0.005f;
 }

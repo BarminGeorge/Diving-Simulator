@@ -5,6 +5,7 @@ using UnityEngine;
 public class Mark : MonoBehaviour
 {
     public Dive dive;
+    public Score score;
     public float ResultMark = -1;
     public Transform transform;
     public float HeightOfDiver;
@@ -42,6 +43,7 @@ public class Mark : MonoBehaviour
         ResultMark = Mathf.Round(ResultMark * 2) / 2;
         if (ResultMark < 0) ResultMark = 0;
         if (ResultMark > 10) ResultMark = 10;
+        score.ResultsRefereeing.Add(ResultMark);
     }
 
     private void ShowMark()
