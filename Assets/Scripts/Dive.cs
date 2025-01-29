@@ -13,15 +13,7 @@ public enum DiveType
     SixthBackClass
 }
 
-public enum DivePosition
-{
-    Took,
-    Pike,
-    Twists,
-    Entrance
-}
-
-public class Dive : MonoBehaviour
+public class Dive : Sounds
 {
     public Sprite FirstClassStand;
     public Sprite SecondClassStand;
@@ -58,6 +50,7 @@ public class Dive : MonoBehaviour
         Jump();
         ChoosePosition();
         Spin();
+        TryChooseSound(transform, forwardDirection);
     }
     
     private void ChooseClassOfDive()

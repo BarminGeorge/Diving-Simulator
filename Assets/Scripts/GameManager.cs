@@ -63,6 +63,7 @@ public class GameManager : MonoBehaviour
         {
             dive.canJump = true;
             dive.classOfDive = new ClassOfDive(DiveType.None);
+            dive.SoundPlayed = false;
         }
     }
 

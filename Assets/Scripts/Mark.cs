@@ -10,8 +10,8 @@ public class Mark : MonoBehaviour
     public Transform transform;
     public float HeightOfDiver;
     public bool IsMarkShow = false;
-    private Vector2 Direction;
     public bool IsMarkGenerated = false;
+    private Vector2 Direction;
     
     private void Update()
     {
