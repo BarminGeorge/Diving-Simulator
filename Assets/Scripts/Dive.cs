@@ -40,9 +40,9 @@ public class Dive : MonoBehaviour
     public BoxCollider2D BoxCollider;
     public Vector2 forwardDirection;
     public Rigidbody2D rigidBody;
+    public SpriteRenderer spriteRenderer;
     
     private float rotationSpeedAndDirection;
-    public SpriteRenderer spriteRenderer;
     private bool canJump = true;
     private ClassOfDive classOfDive = new ClassOfDive(DiveType.None);
     
