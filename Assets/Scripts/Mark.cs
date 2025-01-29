@@ -11,7 +11,7 @@ public class Mark : MonoBehaviour
     public float HeightOfDiver;
     public bool IsMarkShow = false;
     private Vector2 Direction;
-    private bool IsMarkGenerated = false;
+    public bool IsMarkGenerated = false;
     
     private void Update()
     {

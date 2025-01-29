@@ -43,8 +43,8 @@ public class Dive : MonoBehaviour
     public SpriteRenderer spriteRenderer;
     
     private float rotationSpeedAndDirection;
-    private bool canJump = true;
-    private ClassOfDive classOfDive = new ClassOfDive(DiveType.None);
+    public bool canJump = true;
+    public ClassOfDive classOfDive = new ClassOfDive(DiveType.None);
     
     private void Start()
     {

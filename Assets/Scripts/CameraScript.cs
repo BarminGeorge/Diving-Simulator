@@ -7,17 +7,20 @@ public class CameraScript : MonoBehaviour
     public float Limit = 0;
     private Transform player;
 
-    void Start()
+    private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
-    void LateUpdate()
+    private void LateUpdate()
     {
-        Vector3 temp = transform.position;
-        temp.x = player.position.x;
-        temp.y = Mathf.Max(player.position.y, Limit);
+        if (player != null)
+        {
+            Vector3 temp = transform.position;
+            temp.x = player.position.x;
+            temp.y = Mathf.Max(player.position.y, Limit);
         
-        transform.position = temp;
+            transform.position = temp;
+        }
     }
 }
