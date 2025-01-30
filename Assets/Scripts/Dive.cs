@@ -13,20 +13,16 @@ public enum DiveType
     SixthBackClass
 }
 
+public enum DivePosition
+{
+    Took,
+    Pike,
+    Entrance
+}
+
 public class Dive : Sounds
 {
-    public Sprite FirstClassStand;
-    public Sprite SecondClassStand;
-    public Sprite ThirdClassStand;
-    public Sprite FourthClassStand;
-    public Sprite FrontArmStand;
-    public Sprite BackArmStand;
-    public Sprite TookFront;
-    public Sprite TookBack;
-    public Sprite PikeFront;
-    public Sprite PikeBack;
-    public Sprite EntranceFront;
-    public Sprite EntranceBack;
+    public SpriteCollection Collection;
     
     public Transform transform;
     public BoxCollider2D BoxCollider;
@@ -34,9 +30,9 @@ public class Dive : Sounds
     public Rigidbody2D rigidBody;
     public SpriteRenderer spriteRenderer;
     
-    private float rotationSpeedAndDirection;
     public bool canJump = true;
     public ClassOfDive classOfDive = new ClassOfDive(DiveType.None);
+    private float rotationSpeedAndDirection;
     
     private void Start()
     {
@@ -59,40 +55,42 @@ public class Dive : Sounds
             return;
         if (Input.GetKeyDown(KeyCode.Q))
             classOfDive = new ClassOfDive(
-                FirstClassStand, 
+                Collection,
                 DiveType.FirstClass,
-                transform, BoxCollider, 
+                transform, 
+                BoxCollider, 
                 spriteRenderer);
         else if (Input.GetKeyDown(KeyCode.W))
             classOfDive = new ClassOfDive(
-                SecondClassStand, 
+                Collection,
                 DiveType.SecondClass,
-                transform, BoxCollider, 
+                transform, 
+                BoxCollider, 
                 spriteRenderer);
         else if (Input.GetKeyDown(KeyCode.E))
             classOfDive = new ClassOfDive(
-                ThirdClassStand, 
+                Collection,
                 DiveType.ThirdClass,
                 transform, 
                 BoxCollider, 
                 spriteRenderer);
         else if (Input.GetKeyDown(KeyCode.R))
             classOfDive = new ClassOfDive(
-                FourthClassStand, 
+                Collection,
                 DiveType.FourthClass,
                 transform, 
                 BoxCollider, 
                 spriteRenderer);
         else if (Input.GetKeyDown(KeyCode.T))
             classOfDive = new ClassOfDive(
-                FrontArmStand, 
+                Collection,
                 DiveType.SixthFrontClass,
                 transform, 
                 BoxCollider, 
                 spriteRenderer);
         else if (Input.GetKeyDown(KeyCode.Y))
             classOfDive = new ClassOfDive(
-                BackArmStand, 
+                Collection,
                 DiveType.SixthBackClass,
                 transform,
                 BoxCollider,
@@ -129,9 +127,9 @@ public class Dive : Sounds
             PutTheEntrance();
     }
 
-    private void TakeTook() => TakePosition(TookFront, TookBack, Constants.TooKSpeedRotation);
+    private void TakeTook() => TakePosition(Collection.TookFront, Collection.TookBack, Constants.TooKSpeedRotation);
     
-    private void TakePike() => TakePosition(PikeFront, PikeBack, Constants.PikeSpeedRotation);
+    private void TakePike() => TakePosition(Collection.PikeFront, Collection.PikeBack, Constants.PikeSpeedRotation);
     
     // TODO
     private void DoTwists()
@@ -139,7 +137,7 @@ public class Dive : Sounds
         
     }
 
-    private void PutTheEntrance() => TakePosition(EntranceFront, EntranceBack, Constants.EntranceSpeedRotation);
+    private void PutTheEntrance() => TakePosition(Collection.EntranceFront, Collection.EntranceBack, Constants.EntranceSpeedRotation);
     
     private void TakePosition(Sprite faceToWater, Sprite faceAwayFromWater, float speedInPosition)
     {

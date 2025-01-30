@@ -7,9 +7,9 @@ public class ClassOfDive
     public Vector2 forwardDirection = Vector2.up;
 
     public ClassOfDive(
-        Sprite StandSprite, 
-        DiveType SelectedClassOfDive,
-        Transform transform,
+        SpriteCollection collection,
+        DiveType SelectedClassOfDive, 
+        Transform transform, 
         BoxCollider2D BoxCollider,
         SpriteRenderer spriteRenderer)
     {
@@ -17,6 +17,7 @@ public class ClassOfDive
         SetJumpForce();
         if (JumpForce == Constants.JumpForceFromArmStand)
             forwardDirection = Vector2.down;
+        var StandSprite = collection.DiveSprites[SelectedClassOfDive];
         ChangeSpriteInStand(StandSprite, transform, BoxCollider, spriteRenderer);
     }
 
