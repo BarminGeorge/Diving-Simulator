@@ -5,18 +5,18 @@ using UnityEngine;
 public class Sounds : MonoBehaviour
 {
     public SoundArrays[] soundArrays;
-    public AudioSource audioSrc;
+    public AudioSource audioSource;
     public bool SoundPlayed = false;
 
     private void PlaySound(AudioClip clip)
     {
-        audioSrc.PlayOneShot(clip);
+        audioSource.PlayOneShot(clip);
         SoundPlayed = true;
     }
 
     public void TryChooseSound(Transform transform, Vector2 forwardDirection)
     {
-        if (transform.position.y <= 0 && !SoundPlayed)
+        if (transform.position.y <= Constants.LevelWater && !SoundPlayed)
             ChooseSound(forwardDirection);
     }
 

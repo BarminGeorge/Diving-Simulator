@@ -12,15 +12,14 @@ public class ClassOfDive
 
     public ClassOfDive(
         SpriteCollection collection,
-        DiveType SelectedClassOfDive, 
-        Transform transform, 
-        BoxCollider2D BoxCollider,
+        DiveType SelectedClassOfDive,
+        Transform transform,
+        BoxCollider2D BoxCollider, 
         SpriteRenderer spriteRenderer)
     {
         this.SelectedClassOfDive = SelectedClassOfDive;
         SetJumpForce();
-        if (JumpForce == Constants.JumpForceFromArmStand)
-            forwardDirection = Vector2.down;
+        SetForwardDirection();
         var StandSprite = collection.StandSprites[SelectedClassOfDive];
         ChangeSpriteInStand(StandSprite, transform, BoxCollider, spriteRenderer);
         ChoosePositionSprites(collection);
@@ -34,11 +33,16 @@ public class ClassOfDive
 
     private void SetJumpForce()
     {
-        if (SelectedClassOfDive is DiveType.SixthFrontClass 
-            || SelectedClassOfDive is DiveType.SixthBackClass)
+        if (SelectedClassOfDive is DiveType.SixthFrontClass || SelectedClassOfDive is DiveType.SixthBackClass)
             JumpForce = Constants.JumpForceFromArmStand;
         else 
             JumpForce = Constants.DefoltJumpForce;
+    }
+
+    private void SetForwardDirection()
+    {
+        if (JumpForce == Constants.JumpForceFromArmStand)
+            forwardDirection = Vector2.down;
     }
     
     private void ChangeSpriteInStand(Sprite sprite, Transform transform, BoxCollider2D BoxCollider,
@@ -52,8 +56,7 @@ public class ClassOfDive
 
     private float SetColliderYSize()
     {
-        if (SelectedClassOfDive is DiveType.SecondClass
-            || SelectedClassOfDive is DiveType.ThirdClass)
+        if (SelectedClassOfDive is DiveType.SecondClass || SelectedClassOfDive is DiveType.ThirdClass)
             return Constants.DefoltColliderYSize;
         else
             return Constants.ColliderYSizeInStandWirhArmsExtended;
@@ -61,8 +64,7 @@ public class ClassOfDive
 
     private float SetDeltaY()
     {
-        if (SelectedClassOfDive is DiveType.FirstClass
-            || SelectedClassOfDive is DiveType.FourthClass)
+        if (SelectedClassOfDive is DiveType.FirstClass || SelectedClassOfDive is DiveType.FourthClass)
             return Constants.NoDeltaHeight;
         else
             return Constants.DeltaHeightInOtherStands;
@@ -77,11 +79,9 @@ public class ClassOfDive
 
     private void ChooseRotateDirection()
     {
-        if (SelectedClassOfDive is DiveType.SecondClass
-            || SelectedClassOfDive is DiveType.FirstClass
-            || SelectedClassOfDive is DiveType.SixthFrontClass)
-            RotateDirection = Constants.ClockwiseDirection;
-        else 
+        if (SelectedClassOfDive is DiveType.ThirdClass || SelectedClassOfDive is DiveType.FourthClass)
             RotateDirection = Constants.CounterClockwiseDirection;
+        else 
+            RotateDirection = Constants.ClockwiseDirection;
     }
 }

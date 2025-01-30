@@ -5,13 +5,11 @@ using UnityEngine;
 public class Dive : Sounds
 {
     public SpriteCollection Collection;
-    
     public Transform transform;
     public BoxCollider2D BoxCollider;
     public Vector2 forwardDirection;
     public Rigidbody2D rigidBody;
     public SpriteRenderer spriteRenderer;
-    
     public bool canJump = true;
     public ClassOfDive classOfDive = new ClassOfDive(DiveType.None);
     private float rotationSpeedAndDirection;
@@ -36,47 +34,17 @@ public class Dive : Sounds
         if (!canJump) 
             return;
         if (Input.GetKeyDown(KeyCode.Q))
-            classOfDive = new ClassOfDive(
-                Collection,
-                DiveType.FirstClass,
-                transform, 
-                BoxCollider, 
-                spriteRenderer);
+            classOfDive = new ClassOfDive(Collection, DiveType.FirstClass, transform, BoxCollider, spriteRenderer);
         else if (Input.GetKeyDown(KeyCode.W))
-            classOfDive = new ClassOfDive(
-                Collection,
-                DiveType.SecondClass,
-                transform, 
-                BoxCollider, 
-                spriteRenderer);
+            classOfDive = new ClassOfDive(Collection, DiveType.SecondClass, transform, BoxCollider, spriteRenderer);
         else if (Input.GetKeyDown(KeyCode.E))
-            classOfDive = new ClassOfDive(
-                Collection,
-                DiveType.ThirdClass,
-                transform, 
-                BoxCollider, 
-                spriteRenderer);
+            classOfDive = new ClassOfDive(Collection, DiveType.ThirdClass, transform, BoxCollider, spriteRenderer);
         else if (Input.GetKeyDown(KeyCode.R))
-            classOfDive = new ClassOfDive(
-                Collection,
-                DiveType.FourthClass,
-                transform, 
-                BoxCollider, 
-                spriteRenderer);
+            classOfDive = new ClassOfDive(Collection, DiveType.FourthClass, transform, BoxCollider, spriteRenderer);
         else if (Input.GetKeyDown(KeyCode.T))
-            classOfDive = new ClassOfDive(
-                Collection,
-                DiveType.SixthFrontClass,
-                transform, 
-                BoxCollider, 
-                spriteRenderer);
+            classOfDive = new ClassOfDive(Collection, DiveType.SixthFrontClass, transform, BoxCollider, spriteRenderer);
         else if (Input.GetKeyDown(KeyCode.Y))
-            classOfDive = new ClassOfDive(
-                Collection,
-                DiveType.SixthBackClass,
-                transform,
-                BoxCollider,
-                spriteRenderer);
+            classOfDive = new ClassOfDive(Collection, DiveType.SixthBackClass, transform, BoxCollider, spriteRenderer);
     }
     
     private void Jump()

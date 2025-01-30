@@ -14,7 +14,6 @@ public class SpriteCollection : MonoBehaviour
     public Sprite TookBack;
     public Sprite PikeBack;
     public Sprite EntranceBack;
-
     public Dictionary<DiveType, Sprite> StandSprites;
     public Dictionary<DiveType, Dictionary<DivePosition, Sprite>> PositionSprites;
 
@@ -100,8 +99,8 @@ public class SpriteCollection : MonoBehaviour
         unfoldedTexture.Apply();
         
         var rect = new Rect(0, 0, unfoldedTexture.width, unfoldedTexture.height);
-        var pivot = new Vector2(0.5f, 0.5f); // Центр спрайта
-        var unfoldedSprite = Sprite.Create(unfoldedTexture, rect, pivot);
+        var spriteCenter = new Vector2(0.5f, 0.5f);
+        var unfoldedSprite = Sprite.Create(unfoldedTexture, rect, spriteCenter);
 
         return unfoldedSprite;
     }

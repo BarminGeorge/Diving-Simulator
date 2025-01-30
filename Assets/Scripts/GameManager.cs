@@ -2,23 +2,22 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public int currentRound = 0;
+    public int currentRound {get; private set;} = 0;
     public Dive diver;
-    public Mark mark1;
-    public Mark mark2;
-    public Mark mark3;
-    public Mark mark4;
-    public Mark mark5;
-    public Mark mark6;
-    public Mark mark7;
+    public Judge judge1;
+    public Judge judge2;
+    public Judge judge3;
+    public Judge judge4;
+    public Judge judge5;
+    public Judge judge6;
+    public Judge judge7;
     public Score score;
     private int totalRounds = CompetitionProgram.Program.Length;
-    
-    private Vector2[] markStartPositions;
+    private Vector2[] judgeStartPositions;
 
     private void Awake()
     {
-        markStartPositions = new Vector2[]
+        judgeStartPositions = new Vector2[]
         {
             new Vector2(0, Constants.MarkY),
             new Vector2(2, Constants.MarkY),
@@ -32,10 +31,8 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Return) && currentRound < totalRounds)
-        {
+        if (Input.GetKeyDown(KeyCode.Return) && currentRound < totalRounds && score.ScoreIsCalculated)
             StartNewRound();
-        }
     }
 
     private void StartNewRound()
@@ -47,11 +44,8 @@ public class GameManager : MonoBehaviour
     private void ResetGameState()
     {
         ResetPlayer();
-        ResetMarks();
-        score.ScoreIsCalculated = false;
-        score.ResultsRefereeing.Clear();
-        score.UpdateDive();
-        score.transform.position = new Vector2(transform.position.x + 10, transform.position.y);
+        ResetJudges();
+        ResetScore();
     }
 
     private void ResetPlayer()
@@ -68,16 +62,24 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void ResetMarks()
+    private void ResetJudges()
     {
-        Mark[] marks = { mark1, mark2, mark3, mark4, mark5, mark6, mark7 };
-        for (int i = 0; i < marks.Length; i++)
+        Judge[] judges = { judge1, judge2, judge3, judge4, judge5, judge6, judge7 };
+        for (var i = 0; i < judges.Length; i++)
         {
-            marks[i].transform.position = markStartPositions[i];
-            marks[i].enabled = true;
-            marks[i].ResultMark = -1;
-            marks[i].IsMarkShow = false;
-            marks[i].IsMarkGenerated = false;
+            judges[i].enabled = true;
+            judges[i].transform.position = judgeStartPositions[i];
+            judges[i].ResultMark = -1;
+            judges[i].IsMarkShow = false;
+            judges[i].IsMarkGenerated = false;
         }
+    }
+
+    private void ResetScore()
+    {
+        score.ScoreIsCalculated = false;
+        score.ResultsRefereeing.Clear();
+        score.UpdateDive();
+        score.transform.position = new Vector2(transform.position.x + 10, transform.position.y);
     }
 }

@@ -25,4 +25,9 @@ public static class Constants
     public const float DiverX = 0.81f;
     public const float DiverY = 1.71f;
     public const float MarkY = -12.4f;
+
+    public const float LevelWater = 0f;
+
+    public const float MinMark = 0f;
+    public const float MaxMark = 10f;
 }

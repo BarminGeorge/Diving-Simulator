@@ -8,7 +8,7 @@ public class Score : MonoBehaviour
     public string Dive;
     public float GeneralScore;
     public Transform transform;
-    public Mark mark;
+    public Judge LastJudge;
     public bool ScoreIsCalculated = false;
     
     private void Awake()
@@ -24,7 +24,7 @@ public class Score : MonoBehaviour
 
     private void Update()
     {
-        if (ResultsRefereeing.Count == 7 && !ScoreIsCalculated && mark.IsMarkShow)
+        if (ResultsRefereeing.Count == 7 && !ScoreIsCalculated && LastJudge.IsMarkShow)
             CalculateScore();
     }
 
@@ -36,6 +36,5 @@ public class Score : MonoBehaviour
             sum += ResultsRefereeing[i];
         GeneralScore += sum * JumpDifficulty.Platform10M[Dive];
         ScoreIsCalculated = true;
-        transform.position = new Vector2(transform.position.x - 10, transform.position.y);
     }
 }

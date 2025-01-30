@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Mark : MonoBehaviour
+public class Judge : MonoBehaviour
 {
     public Dive dive;
     public Score score;
@@ -23,26 +23,29 @@ public class Mark : MonoBehaviour
 
     private void TryGenerateMark()
     {
-        if (HeightOfDiver <= 0 && !IsMarkGenerated)
+        if (HeightOfDiver <= Constants.LevelWater && !IsMarkGenerated)
             GenerateMark(Direction);
     }
 
     private void GenerateMark(Vector2 direction)
     {
-        IsMarkGenerated = true;
         var angle = Vector2.Angle(direction, Vector2.down);
         if (angle >= 90)
-            ResultMark = 0;
+            ResultMark = Constants.MinMark;
         if (angle <= Constants.AngleForTenPoints)
+            ResultMark = Constants.MaxMark;
+        else
         {
-            ResultMark = 10;
-            return;
+            ResultMark = Constants.MaxMark - (angle / 90) * 10 
+                         + Random.Range(-Constants.RefereeingError, Constants.RefereeingError);
+            ResultMark = Mathf.Round(ResultMark * 2) / 2;
+            if (ResultMark < Constants.MinMark) 
+                ResultMark = Constants.MinMark;
+            if (ResultMark > Constants.MaxMark) 
+                ResultMark = Constants.MaxMark;
         }
 
-        ResultMark = 10 - (angle / 90) * 10 + Random.Range(-Constants.RefereeingError, Constants.RefereeingError);
-        ResultMark = Mathf.Round(ResultMark * 2) / 2;
-        if (ResultMark < 0) ResultMark = 0;
-        if (ResultMark > 10) ResultMark = 10;
+        IsMarkGenerated = true;
         score.ResultsRefereeing.Add(ResultMark);
     }
 
@@ -55,14 +58,13 @@ public class Mark : MonoBehaviour
     private IEnumerator ShowMarkCoroutine()
     {
         var targetY = transform.position.y + Constants.HeightRiseMark;
-        var duration = Constants.RiseTimeMark;
         var timeFromStart = 0f;
 
-        Vector2 startPosition = transform.position;
+        var startPosition = transform.position;
 
-        while (timeFromStart < duration)
+        while (timeFromStart < Constants.RiseTimeMark)
         {
-            var animationProgress = timeFromStart / duration;
+            var animationProgress = timeFromStart / Constants.RiseTimeMark;
             transform.position = Vector2.Lerp(startPosition, new Vector2(startPosition.x, targetY), animationProgress);
         
             timeFromStart += Time.deltaTime;
