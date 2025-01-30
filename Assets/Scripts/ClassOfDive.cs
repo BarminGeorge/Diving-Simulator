@@ -5,6 +5,10 @@ public class ClassOfDive
     public byte JumpForce { get; private set; }
     public DiveType SelectedClassOfDive { get; }
     public Vector2 forwardDirection = Vector2.up;
+    public Sprite TookPosition;
+    public Sprite PikePosition;
+    public Sprite EntrancePosition;
+    public float RotateDirection { get; private set; }
 
     public ClassOfDive(
         SpriteCollection collection,
@@ -17,8 +21,10 @@ public class ClassOfDive
         SetJumpForce();
         if (JumpForce == Constants.JumpForceFromArmStand)
             forwardDirection = Vector2.down;
-        var StandSprite = collection.DiveSprites[SelectedClassOfDive];
+        var StandSprite = collection.StandSprites[SelectedClassOfDive];
         ChangeSpriteInStand(StandSprite, transform, BoxCollider, spriteRenderer);
+        ChoosePositionSprites(collection);
+        ChooseRotateDirection();
     }
 
     public ClassOfDive(DiveType SelectedClassOfDive)
@@ -60,5 +66,22 @@ public class ClassOfDive
             return Constants.NoDeltaHeight;
         else
             return Constants.DeltaHeightInOtherStands;
+    }
+
+    private void ChoosePositionSprites(SpriteCollection collection)
+    {
+        TookPosition = collection.PositionSprites[SelectedClassOfDive][DivePosition.Took];
+        PikePosition = collection.PositionSprites[SelectedClassOfDive][DivePosition.Pike];
+        EntrancePosition = collection.PositionSprites[SelectedClassOfDive][DivePosition.Entrance];
+    }
+
+    private void ChooseRotateDirection()
+    {
+        if (SelectedClassOfDive is DiveType.SecondClass
+            || SelectedClassOfDive is DiveType.FirstClass
+            || SelectedClassOfDive is DiveType.SixthFrontClass)
+            RotateDirection = Constants.ClockwiseDirection;
+        else 
+            RotateDirection = Constants.CounterClockwiseDirection;
     }
 }

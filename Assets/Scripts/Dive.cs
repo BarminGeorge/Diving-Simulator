@@ -2,24 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum DiveType
-{
-    None,
-    FirstClass,
-    SecondClass,
-    ThirdClass,
-    FourthClass,
-    SixthFrontClass,
-    SixthBackClass
-}
-
-public enum DivePosition
-{
-    Took,
-    Pike,
-    Entrance
-}
-
 public class Dive : Sounds
 {
     public SpriteCollection Collection;
@@ -127,9 +109,9 @@ public class Dive : Sounds
             PutTheEntrance();
     }
 
-    private void TakeTook() => TakePosition(Collection.TookFront, Collection.TookBack, Constants.TooKSpeedRotation);
-    
-    private void TakePike() => TakePosition(Collection.PikeFront, Collection.PikeBack, Constants.PikeSpeedRotation);
+    private void TakeTook() => TakePosition(classOfDive.TookPosition, Constants.TookSpeedRotation);
+
+    private void TakePike() => TakePosition(classOfDive.PikePosition, Constants.PikeSpeedRotation);
     
     // TODO
     private void DoTwists()
@@ -137,31 +119,11 @@ public class Dive : Sounds
         
     }
 
-    private void PutTheEntrance() => TakePosition(Collection.EntranceFront, Collection.EntranceBack, Constants.EntranceSpeedRotation);
-    
-    private void TakePosition(Sprite faceToWater, Sprite faceAwayFromWater, float speedInPosition)
+    private void PutTheEntrance() => TakePosition(classOfDive.EntrancePosition, Constants.EntranceSpeedRotation);
+
+    private void TakePosition(Sprite sprite, float speed)
     {
-        if (classOfDive.SelectedClassOfDive is DiveType.FirstClass ||
-            classOfDive.SelectedClassOfDive is DiveType.SixthFrontClass)
-        {
-            spriteRenderer.sprite = faceToWater;
-            rotationSpeedAndDirection = Constants.CounterClockwiseDirection * speedInPosition;
-        }
-        else if (classOfDive.SelectedClassOfDive is DiveType.SecondClass ||
-                 classOfDive.SelectedClassOfDive is DiveType.SixthBackClass)
-        {
-            spriteRenderer.sprite = faceAwayFromWater; 
-            rotationSpeedAndDirection = Constants.CounterClockwiseDirection * speedInPosition;
-        }
-        else if (classOfDive.SelectedClassOfDive is DiveType.ThirdClass)
-        {
-            spriteRenderer.sprite = faceToWater; 
-            rotationSpeedAndDirection = Constants.ClockwiseDirection * speedInPosition;
-        }
-        else
-        {
-            spriteRenderer.sprite = faceAwayFromWater;
-            rotationSpeedAndDirection = Constants.ClockwiseDirection * speedInPosition;
-        }
+        spriteRenderer.sprite = sprite;
+        rotationSpeedAndDirection = classOfDive.RotateDirection * speed;
     }
 }

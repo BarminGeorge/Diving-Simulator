@@ -51,6 +51,7 @@ public class GameManager : MonoBehaviour
         score.ScoreIsCalculated = false;
         score.ResultsRefereeing.Clear();
         score.UpdateDive();
+        score.transform.position = new Vector2(transform.position.x + 10, transform.position.y);
     }
 
     private void ResetPlayer()
