@@ -16,6 +16,8 @@ public class SpriteCollection : MonoBehaviour
     public Sprite EntranceBack;
     public Dictionary<DiveType, Sprite> StandSprites;
     public Dictionary<DiveType, Dictionary<DivePosition, Sprite>> PositionSprites;
+    
+    public Sprite[] AllMarksSprites;
 
     private void Start()
     {

@@ -367,7 +367,7 @@ MonoBehaviour:
   Dive: 407C
   GeneralScore: 0
   transform: {fileID: 582265057}
-  mark: {fileID: 1850472068}
+  LastJudge: {fileID: 1850472068}
   ScoreIsCalculated: 0
 --- !u!212 &582265056
 SpriteRenderer:
@@ -502,7 +502,7 @@ GameObject:
   - component: {fileID: 865047175}
   - component: {fileID: 865047174}
   m_Layer: 0
-  m_Name: Mark1
+  m_Name: Judge1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -606,7 +606,7 @@ GameObject:
   - component: {fileID: 931926504}
   - component: {fileID: 931926503}
   m_Layer: 0
-  m_Name: Mark6
+  m_Name: Judge6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -710,7 +710,7 @@ GameObject:
   - component: {fileID: 1016340746}
   - component: {fileID: 1016340745}
   m_Layer: 0
-  m_Name: Mark2
+  m_Name: Judge2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -831,15 +831,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09c7261387749cc42870fb757cec8f1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentRound: 0
   diver: {fileID: 2060295690}
-  mark1: {fileID: 865047174}
-  mark2: {fileID: 1016340745}
-  mark3: {fileID: 1807752888}
-  mark4: {fileID: 1510872220}
-  mark5: {fileID: 1299294488}
-  mark6: {fileID: 931926503}
-  mark7: {fileID: 1850472068}
+  judge1: {fileID: 865047174}
+  judge2: {fileID: 1016340745}
+  judge3: {fileID: 1807752888}
+  judge4: {fileID: 1510872220}
+  judge5: {fileID: 1299294488}
+  judge6: {fileID: 931926503}
+  judge7: {fileID: 1850472068}
   score: {fileID: 582265055}
 --- !u!4 &1248146963
 Transform:
@@ -868,7 +867,7 @@ GameObject:
   - component: {fileID: 1299294489}
   - component: {fileID: 1299294488}
   m_Layer: 0
-  m_Name: Mark5
+  m_Name: Judge5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -972,7 +971,7 @@ GameObject:
   - component: {fileID: 1510872221}
   - component: {fileID: 1510872220}
   m_Layer: 0
-  m_Name: Mark4
+  m_Name: Judge4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1187,7 +1186,7 @@ GameObject:
   - component: {fileID: 1807752889}
   - component: {fileID: 1807752888}
   m_Layer: 0
-  m_Name: Mark3
+  m_Name: Judge3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1291,7 +1290,7 @@ GameObject:
   - component: {fileID: 1850472069}
   - component: {fileID: 1850472068}
   m_Layer: 0
-  m_Name: Mark7
+  m_Name: Judge7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1445,7 +1444,7 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 6a41dba510c563340aeaaa8963bbf26e, type: 3}
     - {fileID: 8300000, guid: 5b54396e3cf6306418a73aa1fb78f1e0, type: 3}
     - {fileID: 8300000, guid: ebde109fcca6446469e43c791fc707e7, type: 3}
-  audioSrc: {fileID: 2060295695}
+  audioSource: {fileID: 2060295695}
   SoundPlayed: 0
   Collection: {fileID: 864621423}
   transform: {fileID: 2060295694}

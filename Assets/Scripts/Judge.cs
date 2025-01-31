@@ -11,6 +11,8 @@ public class Judge : MonoBehaviour
     public float HeightOfDiver;
     public bool IsMarkShow = false;
     public bool IsMarkGenerated = false;
+    public SpriteRenderer spriteRenderer;
+    public SpriteCollection Collection;
     private Vector2 Direction;
     
     private void Update()
@@ -47,6 +49,7 @@ public class Judge : MonoBehaviour
 
         IsMarkGenerated = true;
         score.ResultsRefereeing.Add(ResultMark);
+        spriteRenderer.sprite = Collection.AllMarksSprites[(int)(ResultMark * 2)];
     }
 
     private void ShowMark()

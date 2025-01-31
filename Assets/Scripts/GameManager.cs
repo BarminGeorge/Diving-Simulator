@@ -31,7 +31,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Return) && currentRound < totalRounds && score.ScoreIsCalculated)
+        if (Input.GetKeyDown(KeyCode.Return) && currentRound < totalRounds - 1 && score.ScoreIsCalculated)
             StartNewRound();
     }
 
