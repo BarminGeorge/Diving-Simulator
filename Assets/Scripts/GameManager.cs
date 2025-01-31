@@ -11,7 +11,9 @@ public class GameManager : MonoBehaviour
     public Judge judge5;
     public Judge judge6;
     public Judge judge7;
+    public Competitors competitors;
     public Score score;
+    public Leaderboard Leaderboard;
     private int totalRounds = CompetitionProgram.Program.Length;
     private Vector2[] judgeStartPositions;
 
@@ -27,11 +29,12 @@ public class GameManager : MonoBehaviour
             new Vector2(10, Constants.MarkY),
             new Vector2(12, Constants.MarkY)
         };
+        competitors.AddPointsToRivals();
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Return) && currentRound < totalRounds - 1 && score.ScoreIsCalculated)
+        if (Input.GetKeyDown(KeyCode.Return) && currentRound < totalRounds - 1 && Leaderboard.LeaderBoardIsShow)
             StartNewRound();
     }
 
@@ -39,6 +42,7 @@ public class GameManager : MonoBehaviour
     {
         currentRound++;
         ResetGameState();
+        competitors.AddPointsToRivals();
     }
 
     private void ResetGameState()
@@ -46,6 +50,7 @@ public class GameManager : MonoBehaviour
         ResetPlayer();
         ResetJudges();
         ResetScore();
+        Leaderboard.LeaderBoardIsShow = false;
     }
 
     private void ResetPlayer()
@@ -80,6 +85,5 @@ public class GameManager : MonoBehaviour
         score.ScoreIsCalculated = false;
         score.ResultsRefereeing.Clear();
         score.UpdateDive();
-        score.transform.position = new Vector2(transform.position.x + 10, transform.position.y);
     }
 }

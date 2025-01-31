@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CameraScript : MonoBehaviour
 {
-    public float Limit = 0;
+    public float LimitY = 0;
     private Transform player;
 
     private void Start()
@@ -14,13 +14,11 @@ public class CameraScript : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (player != null)
-        {
-            Vector3 temp = transform.position;
-            temp.x = player.position.x;
-            temp.y = Mathf.Max(player.position.y, Limit);
         
-            transform.position = temp;
-        }
+        Vector3 temp = transform.position;
+        temp.x = player.position.x;
+        temp.y = Mathf.Max(player.position.y, LimitY);
+        
+        transform.position = temp;
     }
 }
