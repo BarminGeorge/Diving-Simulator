@@ -1,24 +1,33 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraScript : MonoBehaviour
 {
-    public float LimitY = 0;
     private Transform player;
+    private float fixedPlayerX;
+    private bool isXFixed = false;
 
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
-    }
+    } 
 
     private void LateUpdate()
     {
+        var cameraPosition = transform.position;
+        cameraPosition.x = player.position.x;
+        cameraPosition.y = Mathf.Max(player.position.y, Constants.LevelWater);
         
-        Vector3 temp = transform.position;
-        temp.x = player.position.x;
-        temp.y = Mathf.Max(player.position.y, LimitY);
-        
-        transform.position = temp;
+        if (cameraPosition.y <= Constants.LevelWater)
+        {
+            if (!isXFixed)
+            {
+                fixedPlayerX = cameraPosition.x; 
+                isXFixed = true;
+            }
+            cameraPosition.x = fixedPlayerX;
+        }
+        else isXFixed = false;
+
+        transform.position = cameraPosition;
     }
 }

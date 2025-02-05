@@ -20,6 +20,7 @@ public class Leaderboard : MonoBehaviour
     {
         var leaderboard = new List<KeyValuePair<string, float>>();
         leaderboard.Add(new KeyValuePair<string, float>("Diver", score.GeneralScore));
+        
         foreach (var rival in competitors.Rivals)
             leaderboard.Add(new KeyValuePair<string, float>(rival.Key, rival.Value));
         
