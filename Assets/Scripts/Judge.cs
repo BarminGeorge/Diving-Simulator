@@ -68,7 +68,8 @@ public class Judge : MonoBehaviour
         while (timeFromStart < Constants.RiseTimeMark)
         {
             var animationProgress = timeFromStart / Constants.RiseTimeMark;
-            transform.position = Vector2.Lerp(startPosition, new Vector2(startPosition.x, targetY), animationProgress);
+            transform.position = Vector2.Lerp(startPosition, 
+                new Vector2(startPosition.x, targetY), animationProgress);
         
             timeFromStart += Time.deltaTime;
             yield return null;

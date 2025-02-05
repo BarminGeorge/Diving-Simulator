@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     public Competitors competitors;
     public Score score;
     public Leaderboard Leaderboard;
+    public SpriteCollection collection;
     private int totalRounds = CompetitionProgram.Program.Length;
     private Vector2[] judgeStartPositions;
 
@@ -28,7 +29,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Return) && currentRound < totalRounds - 1 && Leaderboard.LeaderBoardIsShow)
+        if (Input.GetKeyDown(KeyCode.Return) && currentRound < totalRounds - 1 && diver.SoundPlayed)
             StartNewRound();
     }
 
@@ -44,7 +45,7 @@ public class GameManager : MonoBehaviour
         ResetPlayer();
         ResetJudges();
         ResetScore();
-        Leaderboard.LeaderBoardIsShow = false;
+        ResetLeaderBoard();
     }
 
     private void ResetPlayer()
@@ -58,6 +59,8 @@ public class GameManager : MonoBehaviour
             dive.canJump = true;
             dive.classOfDive = new ClassOfDive(DiveType.None);
             dive.SoundPlayed = false;
+            diver.spriteRenderer.sprite = collection.ThirdClassStand;
+            diver.BoxCollider.size = new Vector2(diver.BoxCollider.size.x, Constants.DefoltColliderYSize);
         }
     }
 
@@ -78,5 +81,10 @@ public class GameManager : MonoBehaviour
         score.ScoreIsCalculated = false;
         score.ResultsRefereeing.Clear();
         score.UpdateDive();
+    }
+
+    private void ResetLeaderBoard()
+    {
+        Leaderboard.LeaderBoardIsShow = false;
     }
 }

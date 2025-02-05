@@ -23,15 +23,18 @@ public class Sounds : MonoBehaviour
     public void ChooseSound(Vector2 direction)
     {
         var angle = Vector2.Angle(direction, Vector2.down);
+        if (angle > 90) 
+            angle = 180 - angle;
+        
         var result = 10 - (angle / 90) * 10;
         var i = Random.Range(0, 3);
         
         if (result <= 1) PlaySound(soundArrays[0].soundArray[i]);
-        else if (result <= 4) PlaySound(soundArrays[1].soundArray[i]);
-        else if (result <= 5) PlaySound(soundArrays[2].soundArray[i]);
-        else if (result <= 6) PlaySound(soundArrays[3].soundArray[i]);
-        else if (result <= 8) PlaySound(soundArrays[4].soundArray[i]);
-        else if (result <= 9) PlaySound(soundArrays[5].soundArray[i]);
+        else if (result <= 4.5) PlaySound(soundArrays[1].soundArray[i]);
+        else if (result <= 5.5) PlaySound(soundArrays[2].soundArray[i]);
+        else if (result <= 6.5) PlaySound(soundArrays[3].soundArray[i]);
+        else if (result <= 8.5) PlaySound(soundArrays[4].soundArray[i]);
+        else if (result <= 9.5) PlaySound(soundArrays[5].soundArray[i]);
         else PlaySound(soundArrays[6].soundArray[i]);
     }
 

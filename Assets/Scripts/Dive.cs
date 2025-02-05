@@ -58,8 +58,10 @@ public class Dive : Sounds
 
     private void Spin()
     {
-        if (!canJump) 
+        if (!canJump && transform.position.y >= Constants.LevelWater)
             transform.Rotate(0, 0, rotationSpeedAndDirection * Time.deltaTime);
+        else 
+            transform.Rotate(0, 0, 0);
         forwardDirection = transform.up;
     }
     

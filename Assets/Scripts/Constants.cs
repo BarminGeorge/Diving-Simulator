@@ -17,12 +17,12 @@ public static class Constants
     public const float NoDeltaHeight = 0f;
     public const float DeltaXInChangeStand = 0.005f;
 
-    public const float RiseTimeMark = 0.6f;
+    public const float RiseTimeMark = 0.3f;
     public const float HeightRiseMark = 5;
     public const int AngleForTenPoints = 3;
     public const float RefereeingError = 0.5f;
 
-    public const float DiverX = 5.53f;
+    public const float DiverX = 5.43f;
     public const float DiverY = 22.29f;
     public const float MarkY = -10.4f;
     public const float MarkX1 = 4.5f;
