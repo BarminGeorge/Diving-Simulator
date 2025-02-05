@@ -1,8 +1,8 @@
 public static class Constants
 {
-    public const float TookSpeedRotation = 500f;
-    public const float PikeSpeedRotation = 400f;
-    public const float EntranceSpeedRotation = 10f;
+    public const float TookSpeedRotation = 630f;
+    public const float PikeSpeedRotation = 600f;
+    public const float EntranceSpeedRotation = 30f;
 
     public const float ClockwiseDirection = -1;
     public const float CounterClockwiseDirection = 1;
@@ -22,11 +22,13 @@ public static class Constants
     public const int AngleForTenPoints = 3;
     public const float RefereeingError = 0.5f;
 
-    public const float DiverX = 0.81f;
-    public const float DiverY = 1.71f;
-    public const float MarkY = -12.4f;
+    public const float DiverX = 5.53f;
+    public const float DiverY = 22.29f;
+    public const float MarkY = -10.4f;
+    public const float MarkX1 = 4.5f;
 
     public const float LevelWater = 0f;
+    public const float CameraMinLevel = LevelWater + 2;
 
     public const float MinMark = 0f;
     public const float MaxMark = 10f;

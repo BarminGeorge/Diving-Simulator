@@ -15,9 +15,9 @@ public class CameraScript : MonoBehaviour
     {
         var cameraPosition = transform.position;
         cameraPosition.x = player.position.x;
-        cameraPosition.y = Mathf.Max(player.position.y, Constants.LevelWater);
+        cameraPosition.y = Mathf.Max(player.position.y, Constants.CameraMinLevel);
         
-        if (cameraPosition.y <= Constants.LevelWater)
+        if (cameraPosition.y <= Constants.CameraMinLevel)
         {
             if (!isXFixed)
             {
@@ -26,7 +26,6 @@ public class CameraScript : MonoBehaviour
             }
             cameraPosition.x = fixedPlayerX;
         }
-        else isXFixed = false;
 
         transform.position = cameraPosition;
     }

@@ -4,13 +4,7 @@ public class GameManager : MonoBehaviour
 {
     public int currentRound {get; private set;} = 0;
     public Dive diver;
-    public Judge judge1;
-    public Judge judge2;
-    public Judge judge3;
-    public Judge judge4;
-    public Judge judge5;
-    public Judge judge6;
-    public Judge judge7;
+    public Judge[] Judges;
     public Competitors competitors;
     public Score score;
     public Leaderboard Leaderboard;
@@ -21,13 +15,13 @@ public class GameManager : MonoBehaviour
     {
         judgeStartPositions = new Vector2[]
         {
-            new Vector2(0, Constants.MarkY),
-            new Vector2(2, Constants.MarkY),
-            new Vector2(4, Constants.MarkY),
-            new Vector2(6, Constants.MarkY),
-            new Vector2(8, Constants.MarkY),
-            new Vector2(10, Constants.MarkY),
-            new Vector2(12, Constants.MarkY)
+            new Vector2(Constants.MarkX1, Constants.MarkY),
+            new Vector2(Constants.MarkX1 + 2, Constants.MarkY),
+            new Vector2(Constants.MarkX1 + 4, Constants.MarkY),
+            new Vector2(Constants.MarkX1 + 6, Constants.MarkY),
+            new Vector2(Constants.MarkX1 + 8, Constants.MarkY),
+            new Vector2(Constants.MarkX1 + 10, Constants.MarkY),
+            new Vector2(Constants.MarkX1 + 12, Constants.MarkY)
         };
         competitors.AddPointsToRivals();
     }
@@ -69,14 +63,13 @@ public class GameManager : MonoBehaviour
 
     private void ResetJudges()
     {
-        Judge[] judges = { judge1, judge2, judge3, judge4, judge5, judge6, judge7 };
-        for (var i = 0; i < judges.Length; i++)
+        for (var i = 0; i < Judges.Length; i++)
         {
-            judges[i].enabled = true;
-            judges[i].transform.position = judgeStartPositions[i];
-            judges[i].ResultMark = -1;
-            judges[i].IsMarkShow = false;
-            judges[i].IsMarkGenerated = false;
+            Judges[i].enabled = true;
+            Judges[i].transform.position = judgeStartPositions[i];
+            Judges[i].ResultMark = -1;
+            Judges[i].IsMarkShow = false;
+            Judges[i].IsMarkGenerated = false;
         }
     }
 
