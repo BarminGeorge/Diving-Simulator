@@ -34,7 +34,8 @@ public class SpriteCollection : MonoBehaviour
             { DiveType.ThirdClass, ThirdClassStand },
             { DiveType.FourthClass, UnfoldSprite(FirstClassStand) },
             { DiveType.SixthFrontClass, FrontArmStand },
-            { DiveType.SixthBackClass, BackArmStand }
+            { DiveType.SixthBackClass, BackArmStand },
+            { DiveType.SixthThirdClass, FrontArmStand }
         };
     }
 
@@ -82,6 +83,13 @@ public class SpriteCollection : MonoBehaviour
                     { DivePosition.Took, TookBack },
                     { DivePosition.Pike, PikeBack },
                     { DivePosition.Entrance, EntranceBack }
+                }
+            },
+            { DiveType.SixthThirdClass, new Dictionary<DivePosition, Sprite>
+                {
+                    { DivePosition.Took, TookFront },
+                    { DivePosition.Pike, PikeFront },
+                    { DivePosition.Entrance, EntranceFront }
                 }
             }
         };

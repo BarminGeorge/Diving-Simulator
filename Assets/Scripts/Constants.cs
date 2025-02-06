@@ -17,7 +17,7 @@ public static class Constants
     public const float NoDeltaHeight = 0f;
     public const float DeltaXInChangeStand = 0.005f;
 
-    public const float RiseTimeMark = 0.3f;
+    public const float RiseTimeMark = 0.8f;
     public const float HeightRiseMark = 5;
     public const int AngleForTenPoints = 3;
     public const float RefereeingError = 0.5f;

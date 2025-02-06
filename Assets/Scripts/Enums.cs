@@ -6,7 +6,8 @@ public enum DiveType
     ThirdClass,
     FourthClass,
     SixthFrontClass,
-    SixthBackClass
+    SixthBackClass,
+    SixthThirdClass
 }
 
 public enum DivePosition

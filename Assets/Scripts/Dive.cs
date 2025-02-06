@@ -45,6 +45,8 @@ public class Dive : Sounds
             classOfDive = new ClassOfDive(Collection, DiveType.SixthFrontClass, transform, BoxCollider, spriteRenderer);
         else if (Input.GetKeyDown(KeyCode.Y))
             classOfDive = new ClassOfDive(Collection, DiveType.SixthBackClass, transform, BoxCollider, spriteRenderer);
+        else if (Input.GetKeyDown(KeyCode.U))
+            classOfDive = new ClassOfDive(Collection, DiveType.SixthThirdClass, transform, BoxCollider, spriteRenderer);
     }
     
     private void Jump()

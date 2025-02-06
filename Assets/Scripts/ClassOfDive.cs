@@ -33,7 +33,9 @@ public class ClassOfDive
 
     private void SetJumpForce()
     {
-        if (SelectedClassOfDive is DiveType.SixthFrontClass || SelectedClassOfDive is DiveType.SixthBackClass)
+        if (SelectedClassOfDive is DiveType.SixthFrontClass 
+            || SelectedClassOfDive is DiveType.SixthBackClass
+            || SelectedClassOfDive is DiveType.SixthThirdClass)
             JumpForce = Constants.JumpForceFromArmStand;
         else 
             JumpForce = Constants.DefoltJumpForce;
@@ -79,7 +81,9 @@ public class ClassOfDive
 
     private void ChooseRotateDirection()
     {
-        if (SelectedClassOfDive is DiveType.ThirdClass || SelectedClassOfDive is DiveType.FourthClass)
+        if (SelectedClassOfDive is DiveType.ThirdClass
+            || SelectedClassOfDive is DiveType.FourthClass
+            || SelectedClassOfDive is DiveType.SixthThirdClass)
             RotateDirection = Constants.CounterClockwiseDirection;
         else 
             RotateDirection = Constants.ClockwiseDirection;
