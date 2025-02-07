@@ -7,7 +7,7 @@ public class Sounds : MonoBehaviour
     public SoundArrays[] soundArrays;
     public AudioSource audioSource;
     public bool SoundPlayed = false;
-    public EntranceInWater EntranceInWater;
+    public SplashEffect Splash;
 
     private void PlaySound(AudioClip clip)
     {
@@ -18,7 +18,10 @@ public class Sounds : MonoBehaviour
     public void TryChooseSound(Transform transform, Vector2 forwardDirection)
     {
         if (transform.position.y <= Constants.LevelWater && !SoundPlayed)
+        {
+            Splash.ShowSplash(transform, forwardDirection);
             ChooseSound(forwardDirection);
+        }
     }
 
     public void ChooseSound(Vector2 direction)
@@ -29,7 +32,6 @@ public class Sounds : MonoBehaviour
         
         var result = 10 - (angle / 90) * 10;
         var i = Random.Range(0, 3);
-        EntranceInWater.ChooseSplash(result, i);
         if (result <= 1) PlaySound(soundArrays[0].soundArray[i]);
         else if (result <= 4.5) PlaySound(soundArrays[1].soundArray[i]);
         else if (result <= 5.5) PlaySound(soundArrays[2].soundArray[i]);

@@ -28,8 +28,10 @@ public static class Constants
     public const float MarkX1 = 4.5f;
 
     public const float LevelWater = 0f;
-    public const float CameraMinLevel = LevelWater + 2;
+    public const float CameraMinLevel = LevelWater + 1.5f;
 
     public const float MinMark = 0f;
     public const float MaxMark = 10f;
+
+    public const float TimeSplash = 0.2f;
 }
