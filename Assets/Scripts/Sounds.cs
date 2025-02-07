@@ -18,17 +18,16 @@ public class Sounds : MonoBehaviour
     public void TryChooseSound(Transform transform, Vector2 forwardDirection)
     {
         if (transform.position.y <= Constants.LevelWater && !SoundPlayed)
-        {
-            Splash.ShowSplash(transform, forwardDirection);
-            ChooseSound(forwardDirection);
-        }
+            ChooseSound(transform, forwardDirection);
     }
 
-    public void ChooseSound(Vector2 direction)
+    public void ChooseSound(Transform transform, Vector2 direction)
     {
         var angle = Vector2.Angle(direction, Vector2.down);
         if (angle > 90) 
             angle = 180 - angle;
+        
+        Splash.ShowSplash(transform, angle);
         
         var result = 10 - (angle / 90) * 10;
         var i = Random.Range(0, 3);
