@@ -12,7 +12,7 @@ public enum DiveType
 
 public enum DivePosition
 {
-    Took,
+    Tuck,
     Pike,
     Entrance
 }

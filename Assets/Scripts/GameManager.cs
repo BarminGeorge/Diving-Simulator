@@ -60,6 +60,7 @@ public class GameManager : MonoBehaviour
             dive.classOfDive = new ClassOfDive(DiveType.None);
             dive.SoundPlayed = false;
             diver.spriteRenderer.sprite = collection.ThirdClassStand;
+            diver.totalFlips = 0f;
             diver.BoxCollider.size = new Vector2(diver.BoxCollider.size.x, Constants.DefoltColliderYSize);
         }
     }

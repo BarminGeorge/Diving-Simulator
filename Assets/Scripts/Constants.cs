@@ -1,6 +1,6 @@
 public static class Constants
 {
-    public const float TookSpeedRotation = 630f;
+    public const float TuckSpeedRotation = 630f;
     public const float PikeSpeedRotation = 600f;
     public const float EntranceSpeedRotation = 30f;
 

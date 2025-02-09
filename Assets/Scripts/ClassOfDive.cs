@@ -5,7 +5,7 @@ public class ClassOfDive
     public byte JumpForce { get; private set; }
     public DiveType SelectedClassOfDive { get; }
     public Vector2 forwardDirection = Vector2.up;
-    public Sprite TookPosition;
+    public Sprite TuckPosition;
     public Sprite PikePosition;
     public Sprite EntrancePosition;
     public float RotateDirection { get; private set; }
@@ -74,7 +74,7 @@ public class ClassOfDive
 
     private void ChoosePositionSprites(SpriteCollection collection)
     {
-        TookPosition = collection.PositionSprites[SelectedClassOfDive][DivePosition.Took];
+        TuckPosition = collection.PositionSprites[SelectedClassOfDive][DivePosition.Tuck];
         PikePosition = collection.PositionSprites[SelectedClassOfDive][DivePosition.Pike];
         EntrancePosition = collection.PositionSprites[SelectedClassOfDive][DivePosition.Entrance];
     }

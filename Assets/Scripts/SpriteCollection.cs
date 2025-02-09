@@ -8,10 +8,10 @@ public class SpriteCollection : MonoBehaviour
     public Sprite ThirdClassStand;
     public Sprite FrontArmStand;
     public Sprite BackArmStand;
-    public Sprite TookFront;
+    public Sprite TuckFront;
     public Sprite PikeFront;
     public Sprite EntranceFront;
-    public Sprite TookBack;
+    public Sprite TuckBack;
     public Sprite PikeBack;
     public Sprite EntranceBack;
     public Dictionary<DiveType, Sprite> StandSprites;
@@ -45,49 +45,49 @@ public class SpriteCollection : MonoBehaviour
         {
             { DiveType.FirstClass, new Dictionary<DivePosition, Sprite>
                 {
-                    { DivePosition.Took, TookFront },
+                    { DivePosition.Tuck, TuckFront },
                     { DivePosition.Pike, PikeFront },
                     { DivePosition.Entrance, EntranceFront }
                 }
             },
             { DiveType.SecondClass, new Dictionary<DivePosition, Sprite>
                 {
-                    { DivePosition.Took, TookBack },
+                    { DivePosition.Tuck, TuckBack },
                     { DivePosition.Pike, PikeBack },
                     { DivePosition.Entrance, EntranceBack }
                 }
             },
             { DiveType.ThirdClass, new Dictionary<DivePosition, Sprite>
                 {
-                    { DivePosition.Took, TookFront },
+                    { DivePosition.Tuck, TuckFront },
                     { DivePosition.Pike, PikeFront },
                     { DivePosition.Entrance, EntranceFront }
                 }
             },
             { DiveType.FourthClass, new Dictionary<DivePosition, Sprite>
                 {
-                    { DivePosition.Took, TookBack },
+                    { DivePosition.Tuck, TuckBack },
                     { DivePosition.Pike, PikeBack },
                     { DivePosition.Entrance, EntranceBack }
                 }
             },
             { DiveType.SixthFrontClass, new Dictionary<DivePosition, Sprite>
                 {
-                    { DivePosition.Took, TookFront },
+                    { DivePosition.Tuck, TuckFront },
                     { DivePosition.Pike, PikeFront },
                     { DivePosition.Entrance, EntranceFront }
                 }
             },
             { DiveType.SixthBackClass, new Dictionary<DivePosition, Sprite>
                 {
-                    { DivePosition.Took, TookBack },
+                    { DivePosition.Tuck, TuckBack },
                     { DivePosition.Pike, PikeBack },
                     { DivePosition.Entrance, EntranceBack }
                 }
             },
             { DiveType.SixthThirdClass, new Dictionary<DivePosition, Sprite>
                 {
-                    { DivePosition.Took, TookFront },
+                    { DivePosition.Tuck, TuckFront },
                     { DivePosition.Pike, PikeFront },
                     { DivePosition.Entrance, EntranceFront }
                 }

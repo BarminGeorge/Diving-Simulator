@@ -12,6 +12,7 @@ public class Dive : Sounds
     public SpriteRenderer spriteRenderer;
     public bool canJump = true;
     public ClassOfDive classOfDive = new ClassOfDive(DiveType.None);
+    public float totalFlips = 0f;
     private float rotationSpeedAndDirection;
     
     private void Start()
@@ -26,6 +27,7 @@ public class Dive : Sounds
         Jump();
         ChoosePosition();
         Spin();
+        CountFlips();
         TryChooseSound(transform, forwardDirection);
     }
     
@@ -72,7 +74,7 @@ public class Dive : Sounds
         if (canJump) 
             return;
         if (Input.GetKey(KeyCode.Q)) 
-            TakeTook();
+            TakeTuck();
         else if (Input.GetKey(KeyCode.W))
             TakePike();
         else if (Input.GetKey(KeyCode.E))
@@ -81,7 +83,7 @@ public class Dive : Sounds
             PutTheEntrance();
     }
 
-    private void TakeTook() => TakePosition(classOfDive.TookPosition, Constants.TookSpeedRotation);
+    private void TakeTuck() => TakePosition(classOfDive.TuckPosition, Constants.TuckSpeedRotation);
 
     private void TakePike() => TakePosition(classOfDive.PikePosition, Constants.PikeSpeedRotation);
     
@@ -97,5 +99,22 @@ public class Dive : Sounds
     {
         spriteRenderer.sprite = sprite;
         rotationSpeedAndDirection = classOfDive.RotateDirection * speed;
+    }
+
+    private void CountFlips()
+    {
+        if (canJump || transform.position.y < Constants.LevelWater) 
+            return;
+        var currentAngle = Mathf.Atan2(forwardDirection.y, forwardDirection.x) * Mathf.Rad2Deg;
+        var diveAngle = Mathf.Atan2(classOfDive.forwardDirection.y, classOfDive.forwardDirection.x) * Mathf.Rad2Deg;
+        var angleDifference = currentAngle - diveAngle;
+        
+        if (angleDifference < -180f)
+            angleDifference += 360f;
+        else if (angleDifference > 180f)
+            angleDifference -= 360f;
+        
+        totalFlips += angleDifference / 360f;
+        classOfDive.forwardDirection = forwardDirection;
     }
 }
